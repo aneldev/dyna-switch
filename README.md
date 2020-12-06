@@ -55,6 +55,28 @@ const result = dynaSwitch<ITheme>(
 );
 ```
 
+Example with enums:
+
+```
+export enum ETheme {
+  DARK = "DARK",
+  LIGHT = "LIGHT",
+  RED = "RED",
+}
+
+const selectedTheme = ETheme.DARK;
+
+const result = dynaSwitch<ITheme, ETheme>(
+  selectedTheme,
+  lightTheme,
+  {
+    [ETheme.LIGHT]: lightTheme,
+    [ETheme.DARK]: darkTheme,
+    [ETheme.RED]: redTheme,
+  },
+);
+```
+
 Benefits
 
 - Organized like javascript `switch`
