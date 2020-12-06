@@ -1,6 +1,6 @@
 export type TDynamicValue<T = any> = T | (() => T);
 
-export const dynaSwitchIf = <TResult = any, TTestValue = string | number>(
+export const dynaSwitchIf = <TResult = any, TTestValue = any>(
   testValue: TTestValue,
   defaultValue: TDynamicValue<TResult>,
   cases: { if: TDynamicValue<TTestValue>, then: TDynamicValue<TResult> }[],
