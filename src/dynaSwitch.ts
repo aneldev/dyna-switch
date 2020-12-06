@@ -2,8 +2,8 @@ export interface IDynaSwitchCasesDic<TResult = any> {
   [enumCase: string]: TResult | (() => TResult);
 }
 
-export const dynaSwitch = <TResult = any>(
-  testValue: string,
+export const dynaSwitch = <TResult = any, TTestValue = string | number>(
+  testValue: TTestValue,
   default_: TResult,
   cases: IDynaSwitchCasesDic<TResult>,
 ): TResult => {
