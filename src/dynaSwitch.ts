@@ -4,11 +4,13 @@ export interface IDynaSwitchCasesDic<TResult = any> {
 
 export const dynaSwitch = <TResult = any, TTestValue = string | number>(
   testValue: TTestValue,
-  default_: TResult,
+  defaultValue: TResult | (() => TResult),
   cases: IDynaSwitchCasesDic<TResult>,
 ): TResult => {
   const result = cases[testValue as any];
   if (typeof result === "function") return (result as any)();
-  if (typeof result === "undefined") return default_;
+  if (typeof result === "undefined") {
+    return  typeof defaultValue === "function" ? (defaultValue as any)() : defaultValue;
+  }
   return result;
 };

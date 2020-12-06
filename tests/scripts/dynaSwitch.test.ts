@@ -73,7 +73,7 @@ describe('dynaSwitch', () => {
 
   test('valid case with enums', () => {
     const result = dynaSwitch<ITheme, ETheme>(
-      ETheme.LIGHT,
+      ETheme.DARK,
       lightTheme,
       {
         [ETheme.LIGHT]: lightTheme,
@@ -82,6 +82,18 @@ describe('dynaSwitch', () => {
       },
     );
     expect(result.color).toBe('white');
+  });
+
+  test('default value with function', () => {
+    const result = dynaSwitch<ITheme, ETheme>(
+      ETheme.LIGHT,
+      () => lightTheme,
+      {
+        [ETheme.DARK]: darkTheme,
+        [ETheme.RED]: redTheme,
+      },
+    );
+    expect(result.color).toBe('black');
   });
 
   test('valid case with function result', () => {

@@ -68,7 +68,7 @@ const selectedTheme = ETheme.DARK;
 
 const result = dynaSwitch<ITheme, ETheme>(
   selectedTheme,
-  lightTheme,
+  () => lightTheme,             // Default value would be returned by a function
   {
     [ETheme.LIGHT]: lightTheme,
     [ETheme.DARK]: darkTheme,
@@ -146,4 +146,35 @@ const theme = dynaSwitchIf<ITheme>(
 );
 
 expect(theme.color).toBe('white');
+```
+
+# API
+
+Typescript signatures of the moethods
+
+## dynaSwitch
+
+```
+export interface IDynaSwitchCasesDic<TResult = any> {
+  [enumCase: string]: TResult | (() => TResult);
+}
+
+export const dynaSwitch = <TResult = any, TTestValue = string | number>(
+  testValue: TTestValue,
+  defaultValue: TResult | (() => TResult),
+  cases: IDynaSwitchCasesDic<TResult>,
+): TResult
+
+```
+## dynaSwitchIf
+
+
+```
+export type TDynamicValue<T = any> = T | (() => T);
+
+export const dynaSwitchIf = <TResult = any, TTestValue = any>(
+  testValue: TTestValue,
+  defaultValue: TDynamicValue<TResult>,
+  cases: { if: TDynamicValue<TTestValue>, then: TDynamicValue<TResult> }[],
+): TResult 
 ```
