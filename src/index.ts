@@ -6,3 +6,7 @@ export {
 export {
   dynaSwitchIf,
 } from "./dynaSwitchIf";
+
+export {
+  dynaSwitchEnum,
+} from "./dynaSwitchEnum";
