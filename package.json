@@ -4,7 +4,7 @@
   "description": "The dyna-switch",
   "repository": {
     "type": "git",
-    "url": "http://github.com/YOUR_ACCOUNT/dyna-switch"
+    "url": "https://github.com/aneldev/dyna-switch"
   },
   "private": false,
   "sideEffects": false,
